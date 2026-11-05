@@ -1,0 +1,6 @@
+# Python 3.10. Install the CUDA wheel matching your system separately.
+torch==2.6.0
+torchvision==0.21.0
+numpy==1.23.5
+Pillow==12.2.0
+matplotlib==3.7.2

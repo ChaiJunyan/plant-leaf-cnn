@@ -1,0 +1,2 @@
+# Preserve exact source bytes used in the frozen SHA256 protocols.
+* -text

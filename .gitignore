@@ -1,0 +1,16 @@
+data/
+runs/
+artifacts/
+.cache/
+__pycache__/
+*.pyc
+.venv/
+*.part
+STOP_TRAINING
+weights/
+assets/examples/
+results/
+records/
+submission/
+*.docx
+*.pdf
