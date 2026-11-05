@@ -1,0 +1,21 @@
+{
+  "model": "resnet18_ds",
+  "image_size": 224,
+  "batch_size": 96,
+  "eval_batch_size": 128,
+  "workers": 1,
+  "cpu_threads": 1,
+  "epochs": 60,
+  "seed": 42,
+  "learning_rate": 0.05,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "label_smoothing": 0.05,
+  "warmup_epochs": 3,
+  "minimum_lr_ratio": 0.01,
+  "amp": "bf16",
+  "deterministic": false,
+  "run_name": "resnet18_ds_s42_224",
+  "loader_prefetch": 1,
+  "pin_memory": false
+}
