@@ -1,0 +1,37 @@
+{
+  "configs_in_execution_order": [
+    "configs/formal/resnet18_s42_224.json",
+    "configs/formal/resnet18_ds_s42_224.json",
+    "configs/formal/resnet18_se_s42_224.json",
+    "configs/formal/resnet18_ds_se_s42_224.json",
+    "configs/formal/resnet18_s43_224.json",
+    "configs/formal/resnet18_ds_se_s43_224.json"
+  ],
+  "config_sha256": {
+    "configs/formal/resnet18_s42_224.json": "af5c94bbddc0150cc44e9721cb597a9cf388fca32f4eb459a11ae433c7422df7",
+    "configs/formal/resnet18_ds_s42_224.json": "6f044076ffbb747d3c846cfb4e3cbbedaf948d53f7b04a3f0d006ae21d35f39e",
+    "configs/formal/resnet18_se_s42_224.json": "9bb33cc922169311526ef15cb07f58a4b9cabca14cbe593d85d35e8c079fbc2a",
+    "configs/formal/resnet18_ds_se_s42_224.json": "a5c3aa84c38679d4da0e448344f73f608e00b914802bf2452fa2f5ce4dc56a6d",
+    "configs/formal/resnet18_s43_224.json": "6642540bb95999044fd510cdaec5ac4be959f336ad908a7a14d130aa265b920e",
+    "configs/formal/resnet18_ds_se_s43_224.json": "aaa733f32f5adeb5e199955c1378048dcb5651ce6d02155cc132d57fc1066ba9"
+  },
+  "training_source_sha256": {
+    "train.py": "9b48e5f96743c89e95d1dbad122f7ee58ae54b4cef10b07f4375828e68be106a",
+    "src/models.py": "a10122b84617232661d607072817dc53852fe6a5def730981d849e2f402e04cc",
+    "src/data.py": "fb83810f89bc28d9e8aa5c66e0bd92e1b98af4f998bcfb9e635a603991dfbcb7",
+    "src/metrics.py": "7ada7a64a2b73e5a0a9fd538567fd3ee02f40f65da58c1b09c09bb6aa96f4f33"
+  },
+  "manifest_sha256": {
+    "train": "fd3dfda3eda53a806ec9f99fda7320e08c4fe0fd30a3e81e0fb9903dd9a8a896",
+    "val": "b57fa6b9c36b8475efc99846fdaed65c6d563045fc7442606baadd56f7985a32",
+    "test": "46fa3c157fe54e5e6dfb49d12d9b0021dafd67733bb335ec7f9c6a6b92acd621",
+    "quarantine": "f4553d3ec0cbd6a003d6c79d8d49585eedc07c463ac5d5d9a77cc49ee2507869"
+  },
+  "epochs_per_run": 60,
+  "checkpoint_selection": "validation Macro-F1, then validation accuracy, then earlier epoch",
+  "primary_test_metric": "Macro-F1",
+  "secondary_test_metric": "accuracy",
+  "baseline_target": "engineering target: test accuracy >= 95%; not a literature-matched benchmark claim",
+  "allow_documented_loader_change": true,
+  "reproduction_note": "Fixed six runs matching the completed coursework. Original DS+SE repeat selection was made from validation before final testing."
+}

@@ -1,0 +1,122 @@
+{
+  "repository": "https://huggingface.co/datasets/mohanty/PlantVillage",
+  "revision": "9e97599868962bd0079b8db4b7f1efa9185fa1e7",
+  "retrieved_utc": "2026-11-02T10:21:14Z",
+  "tree": [
+    {
+      "type": "directory",
+      "oid": "d09f075f2e6439acad871bf3bfe00a7e0810efc1",
+      "size": 0,
+      "path": "leaf_grouping"
+    },
+    {
+      "type": "directory",
+      "oid": "02bbb9a4f9103f80c973a794f77499463ac11954",
+      "size": 0,
+      "path": "splits"
+    },
+    {
+      "type": "file",
+      "oid": "1ef325f1b111266a6b26e0196871bd78baa8c2f3",
+      "size": 2461,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "e6add25de14e52cc3261690fe7d37d2da21ee71a",
+      "size": 6471,
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "oid": "651bb86b4937e1cf866126d762e573c8ade4aa30",
+      "size": 2184723441,
+      "lfs": {
+        "oid": "fba30c6a7965e49be94b47a62f8aff6cfb1c35c27f475f22092b56db41745e84",
+        "size": 2184723441,
+        "pointerSize": 135
+      },
+      "path": "data.zip"
+    },
+    {
+      "type": "file",
+      "oid": "cb04e3723d2ce15b0411483d71a60b5d536bc7f6",
+      "size": 2429879,
+      "path": "leaf_grouping/leaf-map.json"
+    },
+    {
+      "type": "file",
+      "oid": "bc7f5a701c49178b7e26b232773d353c9c255192",
+      "size": 7949,
+      "path": "plant_village.py"
+    },
+    {
+      "type": "file",
+      "oid": "59c74d7e944dcabdf18ddabf33269009ee32aefb",
+      "size": 1018650,
+      "path": "splits/color_test.txt"
+    },
+    {
+      "type": "file",
+      "oid": "73f6134cb286149451d4b42791f0550c66eee1e5",
+      "size": 4151500,
+      "path": "splits/color_train.txt"
+    },
+    {
+      "type": "file",
+      "oid": "b48a302c5b565da3b52514aec08ec7cdf8267fb9",
+      "size": 1102819,
+      "path": "splits/grayscale_test.txt"
+    },
+    {
+      "type": "file",
+      "oid": "3ad5d98e6287dd377272ab5ffe04522faff17798",
+      "size": 4284551,
+      "path": "splits/grayscale_train.txt"
+    },
+    {
+      "type": "file",
+      "oid": "c26ad92223dc5496fcf023763122f49f4adb3f56",
+      "size": 1280321,
+      "path": "splits/segmented_test.txt"
+    },
+    {
+      "type": "file",
+      "oid": "0c2a6e9e0285a2e3fec082d040882a2a824cf7f7",
+      "size": 4859460,
+      "path": "splits/segmented_train.txt"
+    }
+  ],
+  "files": {
+    "README.md": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/README.md",
+      "size": 6471,
+      "sha256": "9fbe34695a3f05583f47345e5174383226ecee9e7af9e21d979307771b2362fb"
+    },
+    "plant_village.py": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/plant_village.py",
+      "size": 7949,
+      "sha256": "872c207c874ad96e3a2e470299abf67e82b15c66e23f9e4e5b1ed784c69567d8"
+    },
+    "leaf_grouping/leaf-map.json": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/leaf_grouping/leaf-map.json",
+      "size": 2429879,
+      "sha256": "3b4b253683c6911744959a3870a92509b1faa1ee34e9f8585e21d0fe6337a25b"
+    },
+    "splits/color_train.txt": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/splits/color_train.txt",
+      "size": 4151500,
+      "sha256": "c43e0205b321d1c929116f5df1842348ac1e5c4861306e081416785d3c439dbd"
+    },
+    "splits/color_test.txt": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/splits/color_test.txt",
+      "size": 1018650,
+      "sha256": "7a7257dcb5f9456feae6ae81248d29c28f45dc4cd41a00c13a5c5c198c5f2f8b"
+    },
+    "data.zip": {
+      "url": "https://huggingface.co/datasets/mohanty/PlantVillage/resolve/9e97599868962bd0079b8db4b7f1efa9185fa1e7/data.zip",
+      "size": 2184723441,
+      "sha256": "fba30c6a7965e49be94b47a62f8aff6cfb1c35c27f475f22092b56db41745e84"
+    }
+  }
+}
