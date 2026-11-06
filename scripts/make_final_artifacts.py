@@ -131,12 +131,14 @@ def data_figures(summary):
     fig.tight_layout()
     save_figure(fig, "class_distribution")
     rows = list(csv.DictReader((ROOT / "data/manifests/train.csv").open(encoding="utf-8")))
-    fig, axes = plt.subplots(3, 4, figsize=(6.5, 5.4))
+    fig, axes = plt.subplots(2, 6, figsize=(7.2, 3.8))
     for ax, label in zip(axes.flat, [0, 1, 3, 7, 8, 9, 11, 12, 20, 21, 29, 30]):
         row = next(row for row in rows if int(row["label"]) == label)
         with Image.open(ROOT / "data/images" / row["path"]) as image:
             ax.imshow(image.convert("RGB"))
-        ax.set_title(f'{label}  {summary["labels_zh"][label]}', fontsize=9)
+        name = summary["labels_zh"][label]
+        crop_length = 3 if name.startswith("马铃薯") else 2
+        ax.set_title(f'{label} {name[:crop_length]}\n{name[crop_length:]}', fontsize=9)
         ax.axis("off")
     fig.tight_layout()
     save_figure(fig, "training_examples")
