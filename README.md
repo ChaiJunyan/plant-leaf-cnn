@@ -82,6 +82,24 @@ python scripts/verify_results.py
 
 如果需要为新训练的检查点重新建立评估协议，执行 `python scripts/begin_new_evaluation.py`，程序会先归档已有协议和结果。
 
+## 补充重复与标签平滑对照
+
+在主实验的数据和环境准备完成后，执行额外的 DS、SE 种子 43 训练，以及共享种子 44 的两组标签平滑对照。
+
+```powershell
+python -u train.py --config configs/supplement_20261106/resnet18_ds_s43_224.json
+python -u train.py --config configs/supplement_20261106/resnet18_se_s43_224.json
+python -u train.py --config configs/supplement_20261106/smoothing0_s44_15of60.json --stop-after-epochs 15
+python -u train.py --config configs/supplement_20261106/smoothing005_s44_15of60.json --stop-after-epochs 15
+python scripts/verify_checkpoint.py --run resnet18_ds_s43_224
+python scripts/verify_checkpoint.py --run resnet18_se_s43_224
+python scripts/evaluate_additional.py --run resnet18_ds_s43_224 --run resnet18_se_s43_224
+python scripts/evaluate_tuning_validation.py
+python scripts/revision_analysis.py
+```
+
+两组短预算对照均保留 60 轮学习率计划，在第 15 轮保存停止。最佳权重由训练验证指标选择，重载后的配对比较统一使用 FP32，同时保存 BF16 诊断输出和逐图预测。调参脚本只读取验证集。额外结构评价输出到 `results/supplement_20261106/`，调参输出位于其 `tuning_validation/` 子目录。
+
 ## 单图预测
 
 使用训练得到的检查点识别图片：
@@ -110,4 +128,7 @@ python predict.py --image "D:\photos\leaf.jpg"
 | `evaluate.py` | 测试集及固定扰动评估 |
 | `predict.py` | 命令行单图预测 |
 | `configs/formal/` | 六组训练配置 |
+| `configs/supplement_20261106/` | DS/SE 重复与两组短预算调参配置 |
+| `scripts/evaluate_additional.py` | 额外检查点的 FP32 测试评价 |
+| `scripts/evaluate_tuning_validation.py` | 配对调参的验证与精度复核 |
 | `scripts/` | 数据准备、训练队列、结果复核、计时与绘图脚本 |
