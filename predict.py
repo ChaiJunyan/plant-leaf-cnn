@@ -25,7 +25,7 @@ from src.inference import load_model, predict_image
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", type=Path, required=True, help="待识别的叶片图片路径")
-    parser.add_argument("--checkpoint", type=Path, default=ROOT / "weights/leaf_ds_se.pt")
+    parser.add_argument("--checkpoint", type=Path, default=ROOT / "weights/leaf_ds.pt")
     parser.add_argument("--output", type=Path, default=ROOT / "results/demo")
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     args = parser.parse_args()
