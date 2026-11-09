@@ -7,8 +7,15 @@ __pycache__/
 .venv/
 *.part
 STOP_TRAINING
-weights/
-assets/examples/
+weights/*
+!weights/leaf_ds.pt
+!weights/leaf_ds_se.pt
+!weights/inference_manifest.json
+assets/examples/*
+!assets/examples/example_0.jpg
+!assets/examples/example_20.jpg
+!assets/examples/example_30.jpg
+!assets/examples/metadata.json
 results/
 records/
 submission/

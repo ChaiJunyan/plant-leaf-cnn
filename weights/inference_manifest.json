@@ -1,0 +1,22 @@
+{
+  "models": [
+    {
+      "model": "resnet18_ds",
+      "run": "resnet18_ds_s42_224",
+      "filename": "leaf_ds.pt",
+      "bytes": 8263086,
+      "sha256": "4a4a576cb88ec5a9e0743ddec0208f02c1fdef3792c42d316f5af5896ef5ce8a",
+      "source_checkpoint_sha256": "9ad45b0b0775a23bcb0977415cf5a9f0e63481be98a8929f6f13fac2f7f03d54",
+      "tensor_equality_verified": true
+    },
+    {
+      "model": "resnet18_ds_se",
+      "run": "resnet18_ds_se_s42_224",
+      "filename": "leaf_ds_se.pt",
+      "bytes": 8631072,
+      "sha256": "ac9009c6154a31b5eafb8ec4f9f39cdb6361559b15cc780ab98429e954c99fd2",
+      "source_checkpoint_sha256": "1979564c80370d03e5d6528a730cd057f52641ff1e81eb62432a0865bb271502",
+      "tensor_equality_verified": true
+    }
+  ]
+}

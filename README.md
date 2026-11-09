@@ -14,6 +14,20 @@ python -c "import torch; print(torch.__version__); print(torch.cuda.is_available
 
 训练和批量评估使用 CUDA，单图预测默认使用 CPU。绘图使用宋体和 Times New Roman，其他系统可在绘图脚本中调整字体。
 
+## 直接运行示例
+
+仓库已包含 DS、DS+SE 两份精简推理权重和三张样例图。克隆并安装上述依赖后，在项目根目录执行即可预测。
+
+```powershell
+git clone https://github.com/ChaiJunyan/plant-leaf-cnn.git
+cd plant-leaf-cnn
+python predict.py --image assets/examples/example_0.jpg --checkpoint weights/leaf_ds.pt
+```
+
+终端输出前五类，`results/demo/` 保存 `prediction.json` 与 `prediction.png`。使用 `--output results/demo_ds` 可指定输出目录。输入自己的图片时，将 `--image` 改为图片路径。
+
+`weights/leaf_ds.pt` 对应推荐的 DS 结构。`weights/leaf_ds_se.pt` 对应默认 DS+SE，省略 `--checkpoint` 时使用它。两份文件均保留训练配置、类别和来源检查点指纹，权重逐张量核对一致，SHA256 见 `weights/inference_manifest.json`。样例来自 PlantVillage 验证集，来源、许可和 JPEG 处理说明见 `assets/examples/metadata.json`。分类分数表示已知类别间的 softmax 分配。
+
 ## 数据准备
 
 ```powershell
@@ -102,20 +116,39 @@ python scripts/revision_analysis.py
 
 ## 单图预测
 
-使用训练得到的检查点识别图片：
+使用仓库内的 DS 权重识别图片：
 
 ```powershell
-python predict.py --image "D:\photos\leaf.jpg" --checkpoint runs/resnet18_ds_se_s42_224/best.pt
+python predict.py --image "D:\photos\leaf.jpg" --checkpoint weights/leaf_ds.pt
 ```
 
-完成权重导出后，可使用默认权重及生成的示例图：
+使用默认 DS+SE 或自行训练的检查点：
 
 ```powershell
 python predict.py --image assets/examples/example_0.jpg
-python predict.py --image "D:\photos\leaf.jpg"
+python predict.py --image "D:\photos\leaf.jpg" --checkpoint runs/resnet18_ds_s42_224/best.pt
 ```
 
 终端打印前五个类别及其 softmax 分数，并保存 `results/demo/prediction.json` 和 `results/demo/prediction.png`。可通过 `--device cuda` 使用 GPU，或通过 `--output` 指定输出目录。
+
+## 双种子扰动与学习率补充实验
+
+先完成前述八次结构训练与两组标签平滑训练，以及主实验评价。随后固定本次补充实验的输入，再运行队列。
+
+```powershell
+python scripts/freeze_review_protocol.py
+python -u scripts/run_review_study.py --max-hours 10
+python scripts/export_inference_weights.py
+python scripts/download_external_review.py
+python scripts/review_external.py
+python scripts/analyze_review.py
+```
+
+队列依次评价四种结构的两个种子，再训练学习率 0.02、0.1 两组配置，各停止于第 15 轮。学习率 0.05 复用前述种子 44、标签平滑 0.05 组，三组均保留 60 轮学习率计划的前 15 轮。最佳权重与第 15 轮权重统一按 FP32 验证，输出到 `results/review_20261109/lr_validation/`。这些对照只使用验证集。
+
+扰动沿用固定的每类 30 张子集，扫描高斯模糊半径 0.5 至 3，另评价原图、亮度和噪声。结果位于 `results/review_20261109/robustness_summary.json`，运行状态保存在 `runs/review_status_20261109.json`。预算到期在完整轮次结束时保存，再次执行队列可续跑。
+
+外部展示图片由下载脚本按固定来源和指纹获取，作者、许可和来源链接保存在 `assets/external_review_sources.json`。运行前需先准备全部 PlantVillage 清单，用于排查完全相同像素。脚本采用完整验证集最高 softmax 分数的第 5 百分位设阈值，再对外部图片保存 top-5 与接收判定。它用于展示阈值行为，实际识别仍需结合输入范围检查。
 
 ## 代码结构
 
@@ -129,6 +162,8 @@ python predict.py --image "D:\photos\leaf.jpg"
 | `predict.py` | 命令行单图预测 |
 | `configs/formal/` | 六组训练配置 |
 | `configs/supplement_20261106/` | DS/SE 重复与两组短预算调参配置 |
+| `configs/review_20261109/` | 两组新增学习率配置 |
+| `weights/` | DS、DS+SE 推理权重及文件指纹 |
 | `scripts/evaluate_additional.py` | 额外检查点的 FP32 测试评价 |
 | `scripts/evaluate_tuning_validation.py` | 配对调参的验证与精度复核 |
 | `scripts/` | 数据准备、训练队列、结果复核、计时与绘图脚本 |
