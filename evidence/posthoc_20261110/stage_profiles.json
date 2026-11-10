@@ -1,0 +1,57 @@
+{
+  "scope": "Untrained architecture profiles only; accuracy not measured for the extended replacements.",
+  "profiles": [
+    {
+      "ds_stages": [],
+      "parameters": 11196006,
+      "conv_linear_macs": 1813580800,
+      "image_size": 224,
+      "mac_definition": "Conv2d+Linear, batch=1; BN, activations, pooling and elementwise gates excluded; 1 MAC = 2 arithmetic FLOPs",
+      "trained_for_this_comparison": false,
+      "parameter_reduction_percent": 0.0,
+      "mac_reduction_percent": 0.0
+    },
+    {
+      "ds_stages": [
+        3,
+        4
+      ],
+      "parameters": 2045158,
+      "conv_linear_macs": 1096628480,
+      "image_size": 224,
+      "mac_definition": "Conv2d+Linear, batch=1; BN, activations, pooling and elementwise gates excluded; 1 MAC = 2 arithmetic FLOPs",
+      "trained_for_this_comparison": false,
+      "parameter_reduction_percent": 81.73314662389427,
+      "mac_reduction_percent": 39.5324167525373
+    },
+    {
+      "ds_stages": [
+        2,
+        3,
+        4
+      ],
+      "parameters": 1590438,
+      "conv_linear_macs": 740128000,
+      "image_size": 224,
+      "mac_definition": "Conv2d+Linear, batch=1; BN, activations, pooling and elementwise gates excluded; 1 MAC = 2 arithmetic FLOPs",
+      "trained_for_this_comparison": false,
+      "parameter_reduction_percent": 85.7945949653832,
+      "mac_reduction_percent": 59.189687054472564
+    },
+    {
+      "ds_stages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "parameters": 1461670,
+      "conv_linear_macs": 336311552,
+      "image_size": 224,
+      "mac_definition": "Conv2d+Linear, batch=1; BN, activations, pooling and elementwise gates excluded; 1 MAC = 2 arithmetic FLOPs",
+      "trained_for_this_comparison": false,
+      "parameter_reduction_percent": 86.94471939368378,
+      "mac_reduction_percent": 81.45593777790326
+    }
+  ]
+}

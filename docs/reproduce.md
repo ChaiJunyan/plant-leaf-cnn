@@ -70,3 +70,12 @@ python scripts/verify_evidence.py --directory .
 单次训练可用 `python train.py --config <配置路径> --resume runs/<运行名>/last.pt` 恢复。提前停止可在根目录创建 `STOP_TRAINING`，续跑前移走该文件。强制中断后先确认旧进程已退出，再处理遗留的 `runs/queue.lock`。
 
 重新建立主评价协议时执行 `python scripts/begin_new_evaluation.py`，它会归档已有协议和结果。固定种子与环境用于控制实验设置，GPU算法和数据加载恢复仍可能产生数值差异。原始报告结果可始终通过仓库内的复核材料重算。
+
+## 报告补充分析
+
+```powershell
+python scripts/analyze_posthoc.py
+python scripts/analyze_posthoc.py --profile-stages
+```
+
+第一条只读取原始复核包，用已保存的逐图输出复算准确率配对、按关联组bootstrap区间和15箱ECE。第二条额外用PyTorch统计四种替换位置的参数与MACs，新增位置的统计对应未训练结构。补充分析结果位于 `evidence/posthoc_20261110/`。

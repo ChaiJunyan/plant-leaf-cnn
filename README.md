@@ -32,9 +32,11 @@ python scripts/verify_evidence.py
 
 脚本校验压缩包内全部文件的 SHA256，从233,728条预测重建92组混淆矩阵和分类指标，并复核双种子统计、训练轮数、12次外部预测和拒识阈值。输出 `status` 为 `passed` 表示通过。[复核材料说明](evidence/README.md)
 
+补充的配对比较、按叶片关联组重采样区间及15箱ECE可用 `python scripts/analyze_posthoc.py` 复现。结果保存在 `evidence/posthoc_20261110/`，加 `--profile-stages` 可重算未训练结构的替换位置统计。
+
 ## 重新训练
 
-完整的数据准备、六组主实验、补充重复和验证对照命令见[复现步骤](docs/reproduce.md)。训练需要支持 BF16 的 CUDA 显卡，检查点按验证集 Macro-F1 选择。
+完整的数据准备、六组初始实验及两组补充重复（共八次结构训练）和验证对照命令见[复现步骤](docs/reproduce.md)。训练需要支持 BF16 的 CUDA 显卡，检查点按验证集 Macro-F1 选择。
 
 | 结构 | 修改 |
 |---|---|
